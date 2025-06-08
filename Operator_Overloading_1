@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+class Integer {
+private:
+    int value;
+
+public:
+    // Constructor
+    Integer(int val) {
+        value = val;
+    }
+
+    // Overload == operator
+    bool operator==(const Integer& other) const {
+        return value == other.value;
+    }
+
+    // Overload != operator
+    bool operator!=(const Integer& other) const {
+        return value != other.value;
+    }
+
+    // Overload < operator
+    bool operator<(const Integer& other) const {
+        return value < other.value;
+    }
+
+    // Overload > operator
+    bool operator>(const Integer& other) const {
+        return value > other.value;
+    }
+
+    // Optional: function to display the value
+    void display() const {
+        cout << value << endl;
+    }
+};
+
+int main() {
+    Integer num1(10);
+    Integer num2(20);
+
+    cout << "num1: ";
+    num1.display();
+    cout << "num2: ";
+    num2.display();
+
+    // Comparisons
+    if (num1 == num2)
+        cout << "num1 is equal to num2" << endl;
+    if (num1 != num2)
+        cout << "num1 is not equal to num2" << endl;
+    if (num1 < num2)
+        cout << "num1 is less than num2" << endl;
+    if (num1 > num2)
+        cout << "num1 is greater than num2" << endl;
+
+    return 0;
+}
