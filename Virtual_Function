@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+
+class Shape{
+    public:
+
+    virtual float area(){
+        return 0;
+    }
+};
+
+    class Circle : public Shape{
+        int radius;
+
+        public:
+        Circle(int radius){
+            this->radius = radius;
+        }
+        float area() override{
+            return 3.14 *radius*radius;
+        }
+    };
+
+    class Rectangle : public Shape{
+        int length;
+        int breadth;
+
+        public:
+        Rectangle(int length,int breadth){
+            this->length = length;
+            this ->breadth = breadth;
+        }
+        float area() override{
+            return length*breadth;
+        }
+    };
+
+    class Triangle : public Shape{
+        int side;
+
+        public:
+        Triangle(int side){
+            this->side = side;
+        }
+        float area() override{
+            return (side*side)/2.0f;
+        }
+    };
+
+
+    int main(){
+        Shape *shape[3];
+
+
+        shape[0] = new Circle(5);
+        shape[1] = new Rectangle(4,5);
+        shape[2] = new Triangle(6);
+
+        for(int i = 0;i<3;i++)
+        {
+            cout << "Area of Shape : "<< shape[i]->area()<<endl;
+        }
+
+        return 0;
+
+    }
