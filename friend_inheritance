@@ -1,0 +1,90 @@
+#include<iostream>
+using namespace std;
+
+class Student{
+    private:
+    int prn;
+    string course;
+    int batch;
+    string email;
+    int marks[5];
+    float percent;
+    char grade;
+
+
+    public:
+    void getDetails(){
+
+        cout << "Enter the PRN : "<<endl;
+        cin >> prn;
+        cout <<"Enter the Course name : "<<endl;
+        cin >> course;
+        cout <<"Enter the Batch Number : "<<endl;
+        cin >> batch;
+        cout <<"Enter the Email ID : "<<endl;
+        cin >> email;
+        cout << "Enter the 5 subject Marks : "<<endl;
+        for(int i = 0;i<5;i++)
+        {
+            cout << "Subject" << i+1 <<":"<<endl;
+            cin >> marks[i];
+        }
+    }
+
+    void calc_Percent_Details(){
+        int total = 0;
+        for(int  i = 0;i<5;i++)
+        {
+            total +=marks[i];
+        }
+
+        percent = total/5.0;
+
+        if(percent >= 90)
+        {
+            grade = 'A';
+        }
+        else if(percent>= 80 && percent < 90)
+        {
+            grade = 'B';
+        }
+        else if(percent >=70 && percent < 80)
+        {
+            grade = 'C';
+        }
+        else if(percent >= 60 && percent < 70)
+        {
+            grade = 'D';
+        }
+        else if(percent >= 50 && percent < 60)
+        {
+            grade = 'E';
+        }
+    }
+
+    friend void displayPRN_Grade(Student Students[],int n);
+};
+
+void displayPRN_Grade(Student Students[],int n){
+    cout <<"-----PRN-------Grade--------"<<endl;
+    for(int i = 0;i<n;i++)
+    {
+        cout << "PRN : "<< Students[i].prn << "Grade : " << Students[i].grade <<endl;
+    }
+}
+
+int main(){
+    int n;
+    cout <<"Enter the number of Students : "<<endl;
+    cin >> n;
+
+    Student *Students = new Student[n];
+    for(int i = 0;i<n;i++)
+    {
+        Students[i].getDetails();
+        Students[i].calc_Percent_Details();
+    }
+
+    displayPRN_Grade(Students,n);
+
+}
