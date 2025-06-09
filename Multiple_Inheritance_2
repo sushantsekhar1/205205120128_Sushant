@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+class PersonDetails{
+    protected:
+    string name;
+    int age;
+
+    public:
+    void getPersonDetails(){
+        cout << "Enter the Name : "<<endl;
+        cin >> name;
+
+        cout << "Enter the Age : "<<endl;
+        cin >> age;
+    }
+
+    void displayPersonDetails(){
+        cout << "Name : "<< name <<endl;
+        cout << "Age :" << age << endl;
+    }
+};
+
+class AcdemicDetail{
+    protected:
+    string course;
+    float cgpa;
+
+    public:
+    void getAcademicDetails(){
+        cout << "Enter the Course : "<<endl;
+        cin >> course;
+
+        cout << "Enter the CGPA : "<<endl;
+        cin >> cgpa;
+    }
+
+    void displayAcademicDetails(){
+        cout << "Course : "<<course<<endl;
+        cout << "CGPA :"<<cgpa<<endl;
+    }
+};
+
+class SportDetail{
+    protected:
+    string sport;
+    string level;
+
+    public:
+    void getSportDetail(){
+        cout << "Enter the Sport : "<<endl;
+        cin >> sport;
+
+        cout <<"Enter the Level : "<<endl;
+        cin >> level;
+
+    }
+
+    void displaySportDetail(){
+        cout <<"Sport : "<<sport<<endl;
+        cout << "Level : "<<level<<endl;
+    }
+};
+
+class StudentProfile : public PersonDetails, public AcdemicDetail, public SportDetail{
+    public:
+    void getFullDetails(){
+        cout <<endl<<"------------Enter Personal Detail--------------"<<endl;
+        getPersonDetails();
+        getAcademicDetails();
+        getSportDetail();
+
+    }
+
+
+    void displayFullDetails(){
+            cout << "------------Display Full Details--------------"<<endl;
+        displayPersonDetails();
+        displayAcademicDetails();
+        displaySportDetail();
+    }
+
+};
+
+int main(){
+    StudentProfile sp;
+    sp.getFullDetails();
+    sp.displayFullDetails();
+
+    return 0;
+}
